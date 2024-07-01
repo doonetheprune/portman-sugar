@@ -1,0 +1,63 @@
+{
+  "openApiOperation": "POST::/*/example1",
+  "overwrites": [
+    {
+      "overwriteRequestBody": [
+        {
+          "key": "x",
+          "value": "{{userEmail}}"
+        },
+        {
+          "key": "y",
+          "value": "{{userPassword}}"
+        }
+      ]
+    }
+  ],
+  "assignVariables": [
+    {
+      "collectionVariables": [
+        {
+          "responseBodyProp": "data.tokens.accessToken",
+          "name": "tokensAccessToken"
+        },
+        {
+          "responseBodyProp": "data.tokens.refreshToken",
+          "name": "tokensRefreshToken"
+        },
+        {
+          "responseBodyProp": "data.session",
+          "name": "mfaSession"
+        }
+      ]
+    }
+  ],
+  "contentTests": {
+    "responseBodyTests": [
+      {
+        "key": "data.websites[*].url",
+        "value": "http://example.com"
+      }
+    ]
+  },
+  "variations": [
+    {
+      "openApiResponse": "400",
+      "variations": [
+        {
+          "name": "Bad Request",
+          "tests": {
+            "contractTests": true
+          },
+          "extendTests": [
+            {
+              "tests": [
+                "\npm.test('say hello Portman', function(){ \n  console.log('Hello Portman')\n});"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

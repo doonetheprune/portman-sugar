@@ -1,0 +1,428 @@
+{
+  "_": {
+    "postman_id": "274aaeaa-ad8b-412e-89e8-40cf3ebad594"
+  },
+  "item": [
+    {
+      "id": "8fc732aa-2714-46e3-a0b1-fe68d9cfcd6b",
+      "name": "GET Example",
+      "request": {
+        "name": "GET Example",
+        "description": {
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET"
+      },
+      "response": [
+        {
+          "id": "c1b2d773-b0dd-48ff-93e0-f246c59469ea",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "cca64e13-7b71-4902-8ac8-c9ca50447f97",
+            "type": "text/javascript",
+            "exec": [
+              "// Validate response status code \npm.test(\"[GET]::/ - Response status code is 200\", function () {\n    pm.expect(pm.response.code).to.equal(200);\n});\n",
+              "// Validate response time \npm.test(\"[GET]::/ - Response time is less than 300ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(300);\n});\n"
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "262d1cc2-d3ab-42b0-91c3-fef93933b91e",
+      "name": "POST Example",
+      "request": {
+        "name": "POST Example",
+        "description": {
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "something",
+            "example1"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"x\": \"{{userEmail}}\",\n    \"y\": \"{{userPassword}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "fb1bf2fd-0e24-441d-b80f-7c2c80e18dda",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "something",
+                "example1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"x\": 30897762,\n  \"y\": -89077235\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"result\": 7086499\n}",
+          "cookie": []
+        },
+        {
+          "id": "e6e31530-f0c6-4d9f-8233-f46055d2b824",
+          "name": "Bad request due to invalid input",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "something",
+                "example1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"x\": 30897762,\n  \"y\": -89077235\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": {},\n  \"description\": {}\n}",
+          "cookie": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c4034d67-b4ef-4b99-a648-2ffd6685fa65",
+            "type": "text/javascript",
+            "exec": [
+              "// Validate response status code \npm.test(\"[POST]::/something/example1 - Response status code is 200\", function () {\n    pm.expect(pm.response.code).to.equal(200);\n});\n",
+              "// Validate response time \npm.test(\"[POST]::/something/example1 - Response time is less than 300ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(300);\n});\n",
+              "// Validate if response header has matching content-type\npm.test(\"[POST]::/something/example1 - Content-Type is application/json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\n});\n",
+              "// Validate if response has JSON Body \npm.test(\"[POST]::/something/example1 - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n",
+              "// Response Validation\nconst schema = {\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"integer\",\"description\":\"The result of some operation\"}}}\n\n// Validate if response matches JSON schema \npm.test(\"[POST]::/something/example1 - Schema is valid\", function() {\n    pm.response.to.have.jsonSchema(schema,{unknownFormats: [\"int32\", \"int64\", \"float\", \"double\"]});\n});\n",
+              "// Set response object as internal variable\nlet jsonData = {};\ntry {jsonData = pm.response.json();}catch(e){}\n",
+              "const _resArrayDataWebsites = jsonData?.data?.websites;\nconst _resArrayDataWebsitesUrl = _resArrayDataWebsites.find(c => c.url === \"http://example.com\");\n",
+              "// Set property value as variable\nconst _resUrl = _resArrayDataWebsitesUrl?.url;\n",
+              "// Response body should have \"url\"\npm.test(\"[POST]::/something/example1 - Content check if 'url' exists\", function() {\n   pm.expect(_resUrl !== undefined).to.be.true;\n});\n",
+              "// Response body should have value \"http://example.com\" for \"url\"\nif (_resUrl !== undefined) {\npm.test(\"[POST]::/something/example1 - Content check if value for 'url' matches 'http://example.com'\", function() {\n  pm.expect(_resUrl).to.eql(\"http://example.com\");\n})};\n",
+              "// Set property value as variable\nconst _resDataTokensAccessToken = jsonData?.data?.tokens?.accessToken;\n",
+              "// pm.collectionVariables - Set tokensAccessToken as variable for jsonData.data.tokens.accessToken\nif (_resDataTokensAccessToken !== undefined) {\n   pm.environment.set(\"tokensAccessToken\", jsonData.data.tokens.accessToken);\n   console.log(\"- use {{tokensAccessToken}} as collection variable for value\",jsonData.data.tokens.accessToken);\n} else {\n   console.log('INFO - Unable to assign variable {{tokensAccessToken}}, as jsonData.data.tokens.accessToken is undefined.');\n};\n",
+              "// Set property value as variable\nconst _resDataTokensRefreshToken = jsonData?.data?.tokens?.refreshToken;\n",
+              "// pm.collectionVariables - Set tokensRefreshToken as variable for jsonData.data.tokens.refreshToken\nif (_resDataTokensRefreshToken !== undefined) {\n   pm.environment.set(\"tokensRefreshToken\", jsonData.data.tokens.refreshToken);\n   console.log(\"- use {{tokensRefreshToken}} as collection variable for value\",jsonData.data.tokens.refreshToken);\n} else {\n   console.log('INFO - Unable to assign variable {{tokensRefreshToken}}, as jsonData.data.tokens.refreshToken is undefined.');\n};\n",
+              "// Set property value as variable\nconst _resDataSession = jsonData?.data?.session;\n",
+              "// pm.collectionVariables - Set mfaSession as variable for jsonData.data.session\nif (_resDataSession !== undefined) {\n   pm.environment.set(\"mfaSession\", jsonData.data.session);\n   console.log(\"- use {{mfaSession}} as collection variable for value\",jsonData.data.session);\n} else {\n   console.log('INFO - Unable to assign variable {{mfaSession}}, as jsonData.data.session is undefined.');\n};\n"
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d2ef7add-46d3-47b4-9678-edb9d7162508",
+      "name": "Variation Tests",
+      "item": [
+        {
+          "id": "769950b2-b6ce-4c31-a320-e5d422d9cefa",
+          "name": "Test By Shaun Variations",
+          "item": [
+            {
+              "id": "4d1d01fa-b334-44b6-b22c-8b05ea7ea864",
+              "name": "POST Example[Bad Request]",
+              "request": {
+                "name": "POST Example[Bad Request]",
+                "description": {
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "something",
+                    "example1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"x\": \"{{userEmail}}\",\n    \"y\": \"{{userPassword}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "id": "e6a206e1-a72e-4238-9ee5-5513de972e8e",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "something",
+                        "example1"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"x\": 30897762,\n  \"y\": -89077235\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"result\": 7086499\n}",
+                  "cookie": []
+                },
+                {
+                  "id": "37d76197-396e-44e8-80cf-c6ee96bc2369",
+                  "name": "Bad request due to invalid input",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "something",
+                        "example1"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"x\": 30897762,\n  \"y\": -89077235\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"error\": {},\n  \"description\": {}\n}",
+                  "cookie": []
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "b7a458f9-f758-4b83-b61e-73a93ab5e7fc",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate response status code \npm.test(\"[POST]::/something/example1 - Response status code is 400\", function () {\n    pm.expect(pm.response.code).to.equal(400);\n});\n",
+                      "// Validate response time \npm.test(\"[POST]::/something/example1 - Response time is less than 300ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(300);\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[POST]::/something/example1 - Content-Type is application/json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[POST]::/something/example1 - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n",
+                      "// Response Validation\nconst schema = {\"type\":\"object\",\"properties\":{\"error\":\"integer\",\"description\":\"The result of some operation\"}}\n\n// Validate if response matches JSON schema \npm.test(\"[POST]::/something/example1 - Schema is valid\", function() {\n    pm.response.to.have.jsonSchema(schema,{unknownFormats: [\"int32\", \"int64\", \"float\", \"double\"]});\n});\n",
+                      "// Set response object as internal variable\nlet jsonData = {};\ntry {jsonData = pm.response.json();}catch(e){}\n",
+                      "// Set property value as variable\nconst _resDataTokensAccessToken = jsonData?.data?.tokens?.accessToken;\n",
+                      "// pm.collectionVariables - Set tokensAccessToken as variable for jsonData.data.tokens.accessToken\nif (_resDataTokensAccessToken !== undefined) {\n   pm.environment.set(\"tokensAccessToken\", jsonData.data.tokens.accessToken);\n   console.log(\"- use {{tokensAccessToken}} as collection variable for value\",jsonData.data.tokens.accessToken);\n} else {\n   console.log('INFO - Unable to assign variable {{tokensAccessToken}}, as jsonData.data.tokens.accessToken is undefined.');\n};\n",
+                      "// Set property value as variable\nconst _resDataTokensRefreshToken = jsonData?.data?.tokens?.refreshToken;\n",
+                      "// pm.collectionVariables - Set tokensRefreshToken as variable for jsonData.data.tokens.refreshToken\nif (_resDataTokensRefreshToken !== undefined) {\n   pm.environment.set(\"tokensRefreshToken\", jsonData.data.tokens.refreshToken);\n   console.log(\"- use {{tokensRefreshToken}} as collection variable for value\",jsonData.data.tokens.refreshToken);\n} else {\n   console.log('INFO - Unable to assign variable {{tokensRefreshToken}}, as jsonData.data.tokens.refreshToken is undefined.');\n};\n",
+                      "// Set property value as variable\nconst _resDataSession = jsonData?.data?.session;\n",
+                      "// pm.collectionVariables - Set mfaSession as variable for jsonData.data.session\nif (_resDataSession !== undefined) {\n   pm.environment.set(\"mfaSession\", jsonData.data.session);\n   console.log(\"- use {{mfaSession}} as collection variable for value\",jsonData.data.session);\n} else {\n   console.log('INFO - Unable to assign variable {{mfaSession}}, as jsonData.data.session is undefined.');\n};\n"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "274aaeaa-ad8b-412e-89e8-40cf3ebad594",
+    "name": "Test By Shaun",
+    "version": {
+      "raw": "1.0.0",
+      "major": 1,
+      "minor": 0,
+      "patch": 0,
+      "prerelease": [],
+      "build": [],
+      "string": "1.0.0"
+    },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1.0,
+  "tests": {
+    "contractTests": {
+      "$ref": "./postman/testConfig/contract.tests.json"
+    },
+    "variationTests": {
+      "$ref": "./postman/generated/portman.variation.tests.json"
+    }
+  },
+  "assignVariables": {
+    "$ref": "./postman/generated/portman.assignVariables.json"
+  },
+  "overwrites": {
+    "$ref": "./postman/generated/portman.overwrites.json"
+  },
+  "globals": {
+    "stripResponseExamples": false,
+    "portmanReplacements": [
+      {
+        "searchFor": "pm.collectionVariables.set(",
+        "replaceWith": "pm.environment.set("
+      }
+    ]
+  }
+}

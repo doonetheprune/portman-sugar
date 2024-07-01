@@ -1,0 +1,11 @@
+{
+  "collectionName": "auth-service",
+  "local": "./openapi.yaml",
+  "output": "postman/generated/postman.collection.json",
+  "portmanConfigFile": "postman/portman.test.config.json",
+  "postmanConfigFile": "postman/postman.config.json",
+  "postmanFastSync": true,
+  "includeTests": true,
+  "syncPostman": true,
+  "runNewman": false
+}

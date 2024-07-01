@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Example Collection
+  version: 1.0.0
+servers:
+  - url: https://example.com
+paths:
+  /:
+    get:
+      summary: GET Example
+      operationId: getExample
+      responses:
+        '200':
+          description: Successful response
+  /something/example1:
+    post:
+      summary: POST Example
+      operationId: postExample
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                x:
+                  type: integer
+                  description: The x value
+                y:
+                  type: integer
+                  description: The y value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: integer
+                    description: The result of some operation
+        '400':
+          description: Bad request due to invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    error: integer
+                    description: The result of some operation
