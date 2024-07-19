@@ -2,7 +2,7 @@ import {writeFileSync} from "fs";
 import {TestFile} from "./2-fetch-tests";
 import {get} from "lodash";
 
-const createFull = ({openApiOperation, assignVariables}:TestFile) => {
+const createFull = ({openApiOperation, assignVariables = []}:TestFile) => {
     const collectionVariablesCount = get(assignVariables, '0.collectionVariables.length', 0);
     console.log(`   -  ${openApiOperation} has ${collectionVariablesCount} Collection Variables `);
     return assignVariables.map((assignVariable) => {
