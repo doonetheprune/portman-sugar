@@ -25,7 +25,7 @@ npm install --save-dev portman-sugar
 2. **Run the tool** using the command-line interface. Here are some options you can configure:
 
 ```bash
-node dist/index.js --testFolder ./path/to/tests --collectionName "Your Collection Name"
+npx portman-sugar --testFolder ./path/to/tests --collectionName "Your Collection Name"
 ```
 
 ### Command-Line Options

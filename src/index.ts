@@ -12,7 +12,9 @@ import {buildFinalPortmanConfig} from "./7-build-portman-test-config";
 import {buildFinalPortmanCliConfig} from "./8-build-portman-cli-config";
 import {Portman} from "@apideck/portman/dist/Portman";
 import { exec } from 'child_process';
+import * as path from "node:path";
 
+export const PROJECT_ROOT =  path.resolve(__dirname + '/../');
 
 const argv = yargs(hideBin(process.argv))
     .option('testFolder', {
@@ -97,7 +99,7 @@ const ensureDirectoryExists = (dir: string) => {
         throw new Error("Collection Name is Missing");
     }
 
-    const outputFolder = process.cwd() + '/generated';
+    const outputFolder = PROJECT_ROOT + '/generated';
 
     ensureDirectoryExists(outputFolder);
 

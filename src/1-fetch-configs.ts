@@ -1,5 +1,6 @@
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from "fs";
 import {merge} from "lodash";
+import {PROJECT_ROOT} from "./index";
 
 export interface GatherConfigsReturnType {
     configs: Configs;
@@ -71,12 +72,12 @@ const writeMergedConfigs = (configs: Configs, generatedFolder: string) => {
 
 export const gatherConfigs = (generatedFolder: string, customConfigs: ConfigPaths, configsToExclude?: string): GatherConfigsReturnType => {
     const defaultPaths: ConfigPaths = {
-        postmanConfig: './default/postman.config.json',
-        portmanCliConfig: './default/portman.cli.config.json',
-        portmanTestConfig: './default/portman.test.config.json',
-        authConfig: './default/auth.config.json',
-        contractTests: './default/testConfig/contract.tests.json',
-        fuzzingTests: './default/testConfig/fuzzing.tests.json'
+        postmanConfig: `${PROJECT_ROOT}/default/postman.config.json`,
+        portmanCliConfig: `${PROJECT_ROOT}/default/portman.cli.config.json`,
+        portmanTestConfig: `${PROJECT_ROOT}/default/portman.test.config.json`,
+        authConfig: `${PROJECT_ROOT}/default/auth.config.json`,
+        contractTests: `${PROJECT_ROOT}/default/testConfig/contract.tests.json`,
+        fuzzingTests: `${PROJECT_ROOT}/default/testConfig/fuzzing.tests.json`
     };
 
     console.log('   - Load/Merge Configs');
