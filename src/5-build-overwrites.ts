@@ -2,7 +2,7 @@ import {writeFileSync} from "fs";
 import {TestFile} from "./2-fetch-tests";
 import {get} from "lodash";
 
-const createFull = ({openApiOperation, overwrites}:TestFile) => {
+const createFull = ({openApiOperation, overwrites = []}:TestFile) => {
     console.log(`   -  ${openApiOperation} has ${overwrites.length} Overwrites `);
     return overwrites.map((assignVariable) => {
         return { openApiOperation, ...assignVariable };
