@@ -1,6 +1,6 @@
 {
   "name": "portman-sugar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Enhances Portman with modular test configurations, automated test discovery, and predefined overrides for streamlined API testing workflows.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

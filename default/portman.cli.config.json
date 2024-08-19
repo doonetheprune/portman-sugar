@@ -1,5 +1,5 @@
 {
-  "collectionName": "auth-service",
+  "collectionName": "portman-sugar",
   "local": "./openapi.yaml",
   "output": "postman/generated/postman.collection.json",
   "portmanConfigFile": "postman/portman.test.config.json",
