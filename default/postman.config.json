@@ -1,6 +1,6 @@
 {
   "folderStrategy": "1",
-  "requestParametersResolution": "Example",
+  "parametersResolution": "Schema",
   "schemaFaker": false,
   "includeAuthInfoInExample": true
 }
