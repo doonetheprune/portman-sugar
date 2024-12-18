@@ -1,20 +1,30 @@
 import {writeFileSync} from "fs";
 import {TestFile} from "./2-fetch-tests";
 import {get} from "lodash";
+import {Configs} from "./1-fetch-configs";
 
-const createFull = ({openApiOperation, overwrites = []}:TestFile) => {
+const createFull = ({openApiOperation, overwrites = []}: TestFile) => {
     console.log(`   -  ${openApiOperation} has ${overwrites.length} Overwrites `);
     return overwrites.map((assignVariable) => {
-        return { openApiOperation, ...assignVariable };
+        return {openApiOperation, ...assignVariable};
     });
 };
 
-export const buildOverwrites = (outputFolder: string, tests: TestFile[]) => {
+export const buildOverwrites = (outputFolder: string, tests: TestFile[], {authConfig}: Configs) => {
 
     let toSave: Array<any> = [];
 
+    //Add overwrites for tests
     tests.forEach((test: TestFile) => {
         toSave = toSave.concat(createFull(test))
+    });
+
+    //Add overwrites for auth config
+    authConfig.operations.forEach((operation: string) => {
+        toSave.push({
+            openApiOperation: operation,
+            overwriteRequestSecurity: authConfig.overwriteRequestSecurity,
+        });
     });
 
     const jsonOutputPath = `${outputFolder}/5-portman.overwrites.json`;
