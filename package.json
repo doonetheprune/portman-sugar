@@ -1,6 +1,6 @@
 {
   "name": "portman-sugar",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Enhances Portman with modular test configurations, automated test discovery, and predefined overrides for streamlined API testing workflows.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,7 +28,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@apideck/portman": "^1.30.2",
+    "@apideck/portman": "^1.30.7",
     "lodash": "^4.17.21",
     "path": "^0.12.7",
     "yargs": "^17.7.2"
