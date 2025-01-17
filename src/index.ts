@@ -116,7 +116,7 @@ const ensureDirectoryExists = (dir: string) => {
     const assignVariableOutputFile = buildAssignVariables(outputFolder, tests)
 
     console.log('[5/5] Build Overwrites');
-    const overwritesOutputFile = buildOverwrites(outputFolder, tests)
+    const overwritesOutputFile = buildOverwrites(outputFolder, tests, configs)
 
     console.log('[6/] Build Content Tests');
     const contentTestsOutputFile = buildContentTests(outputFolder, tests)
